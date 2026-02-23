@@ -1,0 +1,1 @@
+const pairOfPokemonIds = ["pikachu", "pikachu", "charmander", "charmander"];
