@@ -1,0 +1,12 @@
+function add_catched_pokemon() {
+  const list_catched = document.querySelector(".liste_pokemons_captures");
+
+  if (premierChoix.querySelector(".pokemon").src === pokemon.src) {
+    const capture = document.createElement("img");
+    capture.src = pokemon.src;
+    list_catched.appendChild(capture);
+    premierChoix = null;
+  }
+}
+
+export { add_catched_pokemon };
