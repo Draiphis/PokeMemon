@@ -107,3 +107,4 @@ En utilisant l'api [`localStorage`](https://developer.mozilla.org/fr/docs/Web/AP
   - Vous pouvez bien sûr travailler chacun de votre côté, cependant vous êtes plus efficace à deux sur un problème à résoudre que tout seul, très souvent :) Cela dépendra bien sûr de vos affinités à travailler ensemble et à communiquer efficacement
 
 - Faites des commits réguliers ! Plus vos commits sont petits avec une description compréhensible, plus il est facile de comprendre ce que vous avez fait, et surtout cela vous force à découper vos tâches en plus petites tâches !
+
