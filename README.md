@@ -109,3 +109,4 @@ En utilisant l'api [`localStorage`](https://developer.mozilla.org/fr/docs/Web/AP
 - Faites des commits réguliers ! Plus vos commits sont petits avec une description compréhensible, plus il est facile de comprendre ce que vous avez fait, et surtout cela vous force à découper vos tâches en plus petites tâches !
 
 
+
