@@ -2,11 +2,13 @@ import * as catched from "./modules/pokemoncatched.js";
 
 const grille_jeu = document.getElementById("grille_de_jeu");
 const divs = grille_jeu.querySelectorAll("div");
+const score = document.getElementById("stat_nombre_de_coups");
 let premierChoix = null;
 let deuxiemeChoix = null;
 let listIndex = [];
 let index1;
 let index2;
+let coup = 0;
 
 let pokemonIds = [];
 let pairShuffled = [];
@@ -30,6 +32,15 @@ fetch("http://127.0.0.1:5500/data/pokemon.json")
 
     divs.forEach((div, index) => {
       div.addEventListener("click", () => {
+        if (
+          (premierChoix && deuxiemeChoix) ||
+          grille_jeu.children[index].firstElementChild.classList ==
+            "pokeball" ||
+          grille_jeu.children[index].firstElementChild.classList == "pokemon"
+        ) {
+          return;
+        }
+
         displayPokemon(index, pairShuffled[index]);
         listIndex.push(index);
 
@@ -48,12 +59,16 @@ fetch("http://127.0.0.1:5500/data/pokemon.json")
               displayPokeball(index1);
               displayPokeball(index2);
               premierChoix = null;
+              coup += 1;
+              score.textContent = coup;
             }, 1000);
           } else {
             setTimeout(() => {
               displayBush(index1);
               displayBush(index2);
               premierChoix = null;
+              coup += 1;
+              score.textContent = coup;
             }, 1000);
           }
         }
