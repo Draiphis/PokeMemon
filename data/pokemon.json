@@ -4,6 +4,15 @@
     "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmander.png"
   },
   {
+    "name": "charmeleon",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charmeleon.png"
+  },
+  {
+    "name": "charizard",
+    "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/charizard.png"
+  },
+
+  {
     "name": "squirtle",
     "sprite": "https://img.pokemondb.net/sprites/scarlet-violet/normal/squirtle.png"
   },

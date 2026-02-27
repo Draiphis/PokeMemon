@@ -1,12 +1,17 @@
-function add_catched_pokemon() {
-  const list_catched = document.querySelector(".liste_pokemons_captures");
+const Catched = {
+  add_catched_pokemon() {
+    const list_catched = document.querySelector(".liste_pokemons_captures");
 
-  if (premierChoix.querySelector(".pokemon").src === pokemon.src) {
-    const capture = document.createElement("img");
-    capture.src = pokemon.src;
-    list_catched.appendChild(capture);
-    premierChoix = null;
-  }
-}
+    if (premierChoix.querySelector(".pokemon").src === pokemon.src) {
+      const capture = document.createElement("img");
+      capture.src = pokemon.src;
+      list_catched.appendChild(capture);
+      premierChoix = null;
+    }
+  },
+  other_function() {
+    console.log("J'ai pas de problèmes");
+  },
+};
 
-export { add_catched_pokemon };
+export default Catched;

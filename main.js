@@ -1,8 +1,11 @@
-import * as catched from "./modules/pokemoncatched.js";
+import Catched from "./modules/pokemoncatched.js";
+
+Catched.other_function();
 
 const grille_jeu = document.getElementById("grille_de_jeu");
 const divs = grille_jeu.querySelectorAll("div");
 const score = document.getElementById("stat_nombre_de_coups");
+const captured = document.querySelector(".liste_pokemons_captures");
 let premierChoix = null;
 let deuxiemeChoix = null;
 let listIndex = [];
@@ -13,22 +16,25 @@ let coup = 0;
 let pokemonIds = [];
 let pairShuffled = [];
 
+captured.querySelector("img").remove();
+
 fetch("http://127.0.0.1:5500/data/pokemon.json")
   .then((response) => {
     return response.json();
   })
   .then((data) => {
-    for (var i = 0; i < Object.keys(data).length; i++) {
-      const pokeData = data[i].sprite;
+    data.forEach((i) => {
+      const pokeData = i.sprite;
       pokemonIds.push(pokeData);
-    }
+      console.log(pokeData);
+    });
     const shuffle = melangerListe(pokemonIds);
     console.log(shuffle);
 
     pairShuffled = melangerListe(
       duplicatePairOfPokemon(getPairOfPokemon(shuffle)),
     );
-    console.log(pairShuffled);
+    // console.log(pairShuffled);
 
     divs.forEach((div, index) => {
       div.addEventListener("click", () => {
@@ -58,9 +64,13 @@ fetch("http://127.0.0.1:5500/data/pokemon.json")
             setTimeout(() => {
               displayPokeball(index1);
               displayPokeball(index2);
+              const image = document.createElement("img");
+              image.src = premierChoix;
+              captured.appendChild(image);
               premierChoix = null;
               coup += 1;
               score.textContent = coup;
+              gameWon();
             }, 1000);
           } else {
             setTimeout(() => {
@@ -95,47 +105,6 @@ function getPairOfPokemon(liste) {
 function duplicatePairOfPokemon(liste) {
   return liste.concat(liste);
 }
-
-// document.
-
-//const nombre = Math.floor(Math.random() * 11); // 0 à 10
-// const fruits = ['pomme', 'banane', 'cerise'];
-// const fruit = fruits[Math.floor(Math.random() * fruits.length)];
-// console.log(fruit);
-
-// Click sur bouton*
-
-// grille_jeu.addEventListener("click", (event) => {
-//   const box = event.target.closest(".col.box");
-//   if (!box) return;
-
-//   const bush = box.querySelector(".bush");
-//   if (!bush) return;
-//   bush.style.display = "none";
-
-//   const pokemon = document.createElement("img");
-//   pokemon.src = pairShuffled[0]; // TODO : A changer pour avoir un pokemon de la liste ?
-//   pokemon.classList.add("pokemon");
-//   box.appendChild(pokemon);
-
-//   if (!premierChoix) {
-//     premierChoix = box;
-//     return;
-//   }
-
-//   if (premierChoix.querySelector(".pokemon").src === pokemon.src) {
-//     premierChoix = null;
-//   } else {
-//     const deuxiemeChoix = box;
-//     setTimeout(() => {
-//       premierChoix.querySelector(".pokemon").remove();
-//       premierChoix.querySelector(".bush").style.display = "block";
-//       deuxiemeChoix.querySelector(".pokemon").remove();
-//       deuxiemeChoix.querySelector(".bush").style.display = "block";
-//       premierChoix = null;
-//     }, 1000);
-//   }
-// });
 
 function displayPokeball(box_num) {
   const box = grille_jeu.children[box_num];
@@ -176,3 +145,20 @@ function comparePath(path1, path2) {
     return false;
   }
 }
+
+function gameWon() {
+  let counter = 0;
+  const box = [...grille_jeu.children];
+  box.forEach((element) => {
+    if (!element.querySelector("img").classList.contains("pokeball")) {
+      console.log("pas Victoire !");
+      counter += 1;
+    }
+
+    if (counter == 0) {
+      console.log("Victoire !");
+    }
+  });
+}
+
+console.log(grille_jeu.children);
