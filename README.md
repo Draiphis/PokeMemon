@@ -1,6 +1,7 @@
 # Projet JavaScript - PokeMemon Game
 
 PokeMemon Game est un jeu de mémoire où l'objectif est de trouver les pokemons par paire pour les capturer.
+Ce projet a été développé en pair coding par WARY Valentin et BENACQUISTA Arnaud, une façon de coder à deux en temps réel pour apprendre et progresser ensemble.
 
 ## Capacités du jeu
 
